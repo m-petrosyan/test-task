@@ -13,6 +13,10 @@ class ActivitySeeder extends Seeder
      */
     public function run(): void
     {
-        Activity::factory()->has(Participant::factory())->count(15)->create();
+        Activity::factory()
+            ->withMedia()
+            ->has(Participant::factory()->withMedia()->count(2))
+            ->count(15)
+            ->create();
     }
 }

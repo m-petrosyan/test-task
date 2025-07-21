@@ -44,7 +44,8 @@ defineProps({
         </td>
         <td class="px-3 py-4 text-sm/6 text-gray-400 dark:text-gray-500">
           <Link :href="route('activity.show', { activity: activity.id })">
-            {{ activity.location[0] }}
+            <p>latitude:{{ activity.location[0].latitude }},</p>
+            <p>longitude:{{ activity.location[0].longitude }}</p>
           </Link>
         </td>
         <td class="px-3 py-4 text-sm/6 text-gray-100 dark:text-gray-200">

@@ -1,17 +1,32 @@
 <script setup>
-import {GoogleMap, Marker} from 'vue3-google-map'
+import {GoogleMap, Marker} from 'vue3-google-map';
 
-defineProps({})
-const center = {lat: 40.689247, lng: -74.044502}
+const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+const props = defineProps({
+  latitude: {
+    type: [Number, String],
+    required: true
+  },
+  longitude: {
+    type: [Number, String],
+    required: true
+  },
+});
+
+const center = {
+  lat: parseFloat(props.latitude) || 0,
+  lng: parseFloat(props.longitude) || 0
+};
 </script>
 
 <template>
   <GoogleMap
-      api-key="`import.meta.env.VITE_GOOGLE_MAPS_API_KEY`"
+      :api-key="apiKey"
       style="width: 100%; height: 500px"
       :center="center"
       :zoom="15"
   >
-    <Marker :options="{ position: center }"/>
+    <Marker :options="{ position: center, title: 'Activity Location' }"/>
   </GoogleMap>
 </template>

@@ -80,6 +80,7 @@ class ActivityResource extends Resource
                 Textarea::make('short_description')
                     ->maxLength(500),
                 SpatieMediaLibraryFileUpload::make('images')
+                    ->label('Photos and Videos')
                     ->acceptedFileTypes(['image/*', 'video/*'])
                     ->required()
                     ->multiple()

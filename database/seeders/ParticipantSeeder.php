@@ -12,6 +12,6 @@ class ParticipantSeeder extends Seeder
      */
     public function run(): void
     {
-        Participant::factory()->count(15)->create();
+        Participant::factory()->withMedia()->count(15)->create();
     }
 }

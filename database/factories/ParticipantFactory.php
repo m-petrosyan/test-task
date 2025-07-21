@@ -27,4 +27,13 @@ class ParticipantFactory extends Factory
             ],
         ];
     }
+
+    public function withMedia(): self
+    {
+        return $this->afterCreating(function ($activity) {
+            $activity->addMedia(storage_path('app/public/sample.jpg'))
+                ->preservingOriginal()
+                ->toMediaCollection('logo');
+        });
+    }
 }

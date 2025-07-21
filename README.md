@@ -8,6 +8,7 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 php artisan storage:link
+VITE_GOOGLE_MAPS_API_KEY= // add your Google Maps API key
 npm run dev
 php artisan serve
 ```

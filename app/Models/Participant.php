@@ -22,6 +22,20 @@ class Participant extends Model implements HasMedia
         'location' => 'array',
     ];
 
+    protected $appends = [
+        'logo',
+    ];
+
+    public function getLogoAttribute(): string
+    {
+        return $this->getFirstMediaUrl('logo');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('media_files');
+    }
+
     public function activities(): BelongsToMany
     {
         return $this->belongsToMany(Activity::class);

@@ -8,6 +8,7 @@ use App\Models\Participant;
 use App\Traits\AccessPanelActions;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -56,6 +57,11 @@ class ParticipantResource extends Resource
                     ->minItems(1)
                     ->maxItems(1)
                     ->required(),
+                SpatieMediaLibraryFileUpload::make('logo')
+                    ->acceptedFileTypes(['image/*'])
+                    ->required()
+                    ->directory('media_files')
+                    ->collection('logo'),
             ]);
     }
 

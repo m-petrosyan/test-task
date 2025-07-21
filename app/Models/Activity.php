@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 
 class Activity extends Model implements HasMedia
 {
@@ -27,6 +28,10 @@ class Activity extends Model implements HasMedia
         'location' => 'array',
     ];
 
+    protected $appends = [
+        'files',
+    ];
+
     public function activityType(): BelongsTo
     {
         return $this->belongsTo(ActivityType::class);
@@ -35,6 +40,16 @@ class Activity extends Model implements HasMedia
     public function participant(): BelongsToMany
     {
         return $this->belongsToMany(Participant::class);
+    }
+
+    public function getFilesAttribute(): MediaCollection
+    {
+        return $this->getMedia('media_files');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('media_files');
     }
 
     public function scopeOrderByActivityTypeSortOrder($query)

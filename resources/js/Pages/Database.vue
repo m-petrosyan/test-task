@@ -29,29 +29,29 @@ defineProps({
 
 <template>
   <AuthenticatedLayout title="Database index">
-    <div class="flex flex-wrap gap-x-10">
-      <Link :href="route('user.index')" class="w-1/2">
+    <div class="grid grid-cols-2 gap-x-10 w-1/2 mx-auto">
+      <Link :href="route('user.index')">
         <PageHint
             title="User List"
             :total="userCount">
           <UserIcon/>
         </PageHint>
       </Link>
-      <Link :href="route('activity.index')" class="w-1/2">
+      <Link :href="route('activity.index')">
         <PageHint
             title="Activity List"
             :total="activityCount">
           <ActivityIcon/>
         </PageHint>
       </Link>
-      <Link :href="route('activityType.index')" class="w-1/2">
+      <Link :href="route('activityType.index')">
         <PageHint
             title="Activity Type List"
             :total="activityTypeCount">
           <ActivityTypeIcon/>
         </PageHint>
       </Link>
-      <Link :href="route('participant.index')" class="w-1/2">
+      <Link :href="route('participant.index')">
         <PageHint
             title="Participant List"
             :total="participantCount">

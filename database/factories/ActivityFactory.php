@@ -37,4 +37,21 @@ class ActivityFactory extends Factory
             'registration_link' => fake()->url(),
         ];
     }
+
+    /**
+     * Add media to the activity.
+     *
+     * @return $this
+     */
+    public function withMedia(): self
+    {
+        return $this->afterCreating(function ($activity) {
+            $activity->addMedia(storage_path('app/public/sample.jpg'))
+                ->preservingOriginal()
+                ->toMediaCollection('media_files');
+            $activity->addMedia(storage_path('app/public/sample.mp4'))
+                ->preservingOriginal()
+                ->toMediaCollection('media_files');
+        });
+    }
 }
